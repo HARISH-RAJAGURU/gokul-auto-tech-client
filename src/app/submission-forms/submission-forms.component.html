@@ -1,0 +1,30 @@
+<form *ngIf="form" [formGroup]="form" class="mt-20" (ngSubmit)="onSubmit()">
+  <h2 class="text-center font-semibold my-5">Fill The Fields</h2>
+  <ng-container *ngFor="let field of dynamicFields" >
+    <div class="form-group flex flex-col justify-center items-center gap-5">
+      <section class="flex flex-col gap-3">
+        <label class="uppercase font-bold my-1">{{ field.name }}</label>
+        <input
+          type="number"
+          class="input input-bordered w-[500px]"
+          [formControlName]="field.name"
+        />
+        <div
+          *ngIf="
+            field.required &&
+            form?.get(field.name)?.invalid &&
+            form?.get(field.name)?.touched
+          "
+          class="text-red-700"
+        >
+          This field is required.
+        </div>
+      </section>
+    </div>
+  </ng-container>
+  <section class="flex justify-center items-center mt-6">
+    <button type="submit" [disabled]="form?.invalid" class="btn bg-success" >
+      Submit
+    </button>
+  </section>
+</form>

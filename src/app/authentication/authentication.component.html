@@ -1,0 +1,71 @@
+<section class="mt-20">
+  <section class="flex justify-center items-center">
+    <img src="../../assets/logo.png" alt="" class="w-[100px] h-[170px]" />
+  </section>
+  <p class="text-center font-bold">Log In Into Your Account</p>
+
+  <form
+    action=""
+    (ngSubmit)="onSubmit()"
+    [formGroup]="authentication"
+    #formref="ngForm"
+    class="flex flex-col justify-center items-center w-1/2 mx-auto"
+  >
+    <section>
+      <div class="label">
+        <span class="label-text font-semibold">Enter Your Email :</span>
+      </div>
+      <div class="relative">
+        <input
+          type="text"
+          placeholder="Type here"
+          class="input input-bordered w-[500px]"
+          formControlName="employeeEmail"
+        />
+        <!-- <i
+          class="fa-regular fa-envelope text-white bg-[#FF4E00] p-4 "
+        ></i> -->
+      </div>
+      <div class="label">
+        <span
+          class="label-text-alt text-red-600"
+          *ngIf="
+            formref.submitted &&
+            authentication.controls['employeeEmail'].invalid
+          "
+          >Enter a valid Email</span
+        >
+      </div>
+    </section>
+
+    <section>
+      <div class="label">
+        <span class="label-text font-semibold">Enter Your Password :</span>
+      </div>
+      <div class="relative">
+        <input
+          type="text"
+          placeholder="Type here"
+          class="input input-bordered w-[500px]"
+          formControlName="password"
+        />
+        <!-- <i
+          class="fa-regular fa-eye text-white bg-[#FF4E00] p-4 "
+        ></i> -->
+      </div>
+      <div class="label">
+        <span
+          class="label-text-alt text-red-600"
+          *ngIf="
+            formref.submitted && authentication.controls['password'].invalid
+          "
+          >Enter Your Password</span
+        >
+      </div>
+    </section>
+
+    <button class="btn bg-[#FF4E00] text-white hover:bg-success w-[500px]">
+      Submit
+    </button>
+  </form>
+</section>
